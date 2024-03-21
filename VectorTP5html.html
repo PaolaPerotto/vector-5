@@ -1,0 +1,74 @@
+<html>
+<head>
+    <title> Vector 5 </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(50, 206, 193);
+        }
+        </style>
+</head>
+<body>
+    
+    <script>
+        
+    function generarVectorAleatorio(N) {
+  let vector = [];
+  for (let i = 0; i < N; i++) {
+    vector.push(Math.floor(Math.random() * 32000));
+  }
+  return vector;
+}
+
+function calcularPromedio(vector) {
+  const suma = vector.reduce((acc, curr) => acc + curr, 0);
+  return suma / vector.length;
+}
+
+function generarVectorB(vectorA, promedio) {
+  return vectorA.filter(elemento => elemento > promedio);
+}
+
+function contarMultiplosDosYTres(vector) {
+  return vector.reduce((contador, elemento) => {
+    if (elemento % 2 === 0 && elemento % 3 === 0) {
+      contador++;
+    }
+    return contador;
+  }, 0);
+}
+
+function calcularSuma(vector) {
+  return vector.reduce((suma, elemento) => suma + elemento, 0);
+}
+
+function generarVectorC(vectorA) {
+  return vectorA.map(elemento => elemento * 2);
+}
+
+const N = parseInt(prompt("Ingrese la cantidad de elementos para el vector A:"));
+const vectorA = generarVectorAleatorio(N);
+
+const promedio = calcularPromedio(vectorA);
+
+const vectorB = generarVectorB(vectorA, promedio);
+
+const cantidadMultiplosDosYTres = contarMultiplosDosYTres(vectorA);
+
+const sumaElementos = calcularSuma(vectorA);
+
+const vectorC = generarVectorC(vectorA);
+
+
+document.write("<h2>Resultados:</h2>");
+document.write("<p>Vector A: " + vectorA + "</p>");
+document.write("<p>Promedio de elementos del vector A: " + promedio + "</p>");
+document.write("<p>Vector B: " + vectorB + "</p>");
+document.write("<p>Cantidad de elementos que son múltiplos de 2 y 3: " + cantidadMultiplosDosYTres + "</p>");
+document.write("<p>Suma de todos los elementos del vector A: " + sumaElementos + "</p>");
+document.write("<p>Vector C: " + vectorC + "</p>");
+    </script>
+    </body>
+</html>
